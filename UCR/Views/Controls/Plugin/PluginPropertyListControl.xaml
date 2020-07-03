@@ -8,24 +8,26 @@
              xmlns:plugin="clr-namespace:HidWizards.UCR.Views.Controls.Plugin"
              xmlns:utilities="clr-namespace:HidWizards.UCR.Utilities"
              mc:Ignorable="d"
-             Padding="8 0"
+             Padding="0"
+             Margin="0"
+             FontSize="8"
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
-        <plugin:PluginGuiTemplateSelector x:Key="PluginGuiTemplateSelector" />
+        <plugin:PluginGuiTemplateSelector x:Key="PluginGuiTemplateSelector"/>
     </UserControl.Resources>
-    <ItemsControl ItemsSource="{Binding PluginProperties}" ItemTemplateSelector="{StaticResource PluginGuiTemplateSelector}">
+    <ItemsControl ItemsSource="{Binding PluginProperties}" ItemTemplateSelector="{StaticResource PluginGuiTemplateSelector}" Margin="0" Padding="0" FontSize="8">
         <ItemsControl.Resources>
             <DataTemplate x:Key="BooleanTemplate">
                 <plugin:PluginPropertyControl>
                     <plugin:PluginPropertyControl.PropertyContent>
-                        <ToggleButton Grid.Row="0" Grid.Column="1" IsChecked="{Binding Property, Mode=TwoWay}" Style="{StaticResource MaterialDesignSwitchToggleButton}"/>
+                        <ToggleButton Height="10" Margin="0" Padding="0" FontSize="8" Grid.Row="0" Grid.Column="1" IsChecked="{Binding Property, Mode=TwoWay}" Style="{StaticResource MaterialDesignSwitchToggleButton}"/>
                     </plugin:PluginPropertyControl.PropertyContent>
                 </plugin:PluginPropertyControl>
             </DataTemplate>
             <DataTemplate x:Key="NumberTemplate">
                 <plugin:PluginPropertyControl>
                     <plugin:PluginPropertyControl.PropertyContent>
-                        <TextBox Width="50" Height="25" PreviewTextInput="NumberValidationTextBox">
+                        <TextBox Width="50" Margin="0" Padding="0" FontSize="8" PreviewTextInput="NumberValidationTextBox">
                             <TextBox.Resources>
                                 <utilities:DataContextBindingProxy x:Key="NumberBindingProxy" Data="{Binding}"/>
                             </TextBox.Resources>
@@ -47,7 +49,7 @@
             <DataTemplate x:Key="DecimalTemplate">
                 <plugin:PluginPropertyControl>
                     <plugin:PluginPropertyControl.PropertyContent>
-                        <TextBox Width="50" Height="25" PreviewTextInput="DecimalValidationTextBox">
+                        <TextBox Width="50" Margin="0" Padding="0" FontSize="8" PreviewTextInput="DecimalValidationTextBox">
                             <TextBox.Resources>
                                 <utilities:DataContextBindingProxy x:Key="DecimalBindingProxy" Data="{Binding}"/>
                             </TextBox.Resources>
@@ -69,14 +71,14 @@
             <DataTemplate x:Key="StringTemplate">
                 <plugin:PluginPropertyControl>
                     <plugin:PluginPropertyControl.PropertyContent>
-                        <TextBox Width="200" Height="25" Text="{Binding Property, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Width="200" Margin="0" Padding="0" FontSize="8" Text="{Binding Property, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     </plugin:PluginPropertyControl.PropertyContent>
                 </plugin:PluginPropertyControl>
             </DataTemplate>
             <DataTemplate x:Key="EnumTemplate">
                 <plugin:PluginPropertyControl>
                     <plugin:PluginPropertyControl.PropertyContent>
-                        <local:EnumControl PluginProperty="{Binding PluginProperty}"/>
+                        <local:EnumControl Margin="0" Padding="0" FontSize="8" PluginProperty="{Binding PluginProperty}"/>
                     </plugin:PluginPropertyControl.PropertyContent>
                 </plugin:PluginPropertyControl>
             </DataTemplate>

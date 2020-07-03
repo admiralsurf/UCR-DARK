@@ -20,61 +20,58 @@
     <GroupBox Width="auto"
               Header="{Binding}"
               Style="{StaticResource MaterialDesignCardGreyGroupBox}"
-              Margin="4 6 4 6"
-              Background="LightGray">
+              Margin="10 0" Padding="0" FontSize="8"
+              Background="Gray">
         <GroupBox.HeaderTemplate>
             <DataTemplate>
-                <Grid>
+                <Grid  Margin="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Margin="0" VerticalAlignment="Center" Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="{Binding MappingTitle}" />
-
+                    <TextBlock  Height="10" Margin="0" Padding="0" FontSize="8" VerticalAlignment="Center" Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="{Binding MappingTitle}" />
                     <StackPanel Grid.Column="1" Orientation="Horizontal" IsEnabled="{Binding ButtonsEnabled}">
-                        <Button ToolTip="Rename mapping"
+                        <Button ToolTip="Rename mapping"  Margin="8 0" Padding="0" FontSize="8" Height="10" Width="10"
                                 Style="{StaticResource MaterialDesignCardButton}"
                                 Foreground="{StaticResource PrimaryHueMidForegroundBrush}"
                                 Click="Rename_OnClick">
-                            <materialDesign:PackIcon Kind="Edit" Width="20" Height="20"/>
+                            <materialDesign:PackIcon Kind="Edit" Height="10" Margin="0" Padding="0" FontSize="8" Width="10"/>
                         </Button>
-                        <Button ToolTip="Add plugin to mapping"
+                        <Button ToolTip="Add plugin to mapping" Height="10" Margin="8 0" Padding="0" FontSize="8" Width="10"
                                 Style="{StaticResource MaterialDesignCardButton}"
                                 Foreground="{StaticResource PrimaryHueMidForegroundBrush}"
                                 Click="AddPlugin_OnClick">
-                            <materialDesign:PackIcon Kind="LibraryAdd" Width="20" Height="20"/>
+                            <materialDesign:PackIcon Kind="LibraryAdd" Height="10" Margin="0" Padding="0" FontSize="8" Width="10"/>
                         </Button>
-                        <Button ToolTip="Remove mapping"
+                        <Button ToolTip="Remove mapping"  Height="10" Margin="8 0" Padding="0" FontSize="8" Width="10"
                                 Style="{StaticResource MaterialDesignGroupBoxButton}"
                                 Foreground="{StaticResource PrimaryHueMidForegroundBrush}"
                                 Click="Remove_OnClick">
-                            <materialDesign:PackIcon Kind="Trash" Width="20" Height="20"/>
+                            <materialDesign:PackIcon Kind="Trash" Width="10" Height="10"/>
                         </Button>
                     </StackPanel>
                 </Grid>
             </DataTemplate>
         </GroupBox.HeaderTemplate>
-        <StackPanel>
-            <materialDesign:Card Padding="8">
-                <ItemsControl ItemsSource="{Binding DeviceBindings}"
-                          HorizontalContentAlignment="Stretch">
+        <StackPanel Margin="0">
+            <materialDesign:Card Padding="8 0" Margin="0" FontSize="8" >
+                <ItemsControl ItemsSource="{Binding DeviceBindings}" HorizontalContentAlignment="Stretch" Margin="0" Padding="0" FontSize="8">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <local:DeviceBindingControl DataContext="{Binding}" DeviceBinding="{Binding DeviceBinding}" Label="{Binding DeviceBindingName}" Category="{Binding DeviceBindingCategory}" />
+                            <local:DeviceBindingControl Margin="0" Padding="0" FontSize="8" DataContext="{Binding}" DeviceBinding="{Binding DeviceBinding}" Label="{Binding DeviceBindingName}" Category="{Binding DeviceBindingCategory}" />
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
             </materialDesign:Card>
-
-            <ItemsControl ItemsSource="{Binding Plugins}" VerticalAlignment="Stretch">
+            <ItemsControl ItemsSource="{Binding Plugins}" VerticalAlignment="Stretch" Margin="0" Padding="0" FontSize="8">
                 <ItemsControl.Resources>
-                    <Style TargetType="ListBoxItem" BasedOn="{StaticResource MaterialDesignListBoxItem}">
+                    <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource MaterialDesignListBoxItem}">
                         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
                     </Style>
                 </ItemsControl.Resources>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate >
-                        <plugin:PluginControl Margin="0 8 0 0" />
+                        <plugin:PluginControl  Margin="0" Padding="0" FontSize="8" />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

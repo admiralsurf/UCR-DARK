@@ -7,50 +7,66 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:plugin="clr-namespace:HidWizards.UCR.Views.Controls.Plugin"
              mc:Ignorable="d" 
+             Margin="0"
+             FontSize="8"
+             Padding="0"
              d:DesignHeight="300" d:DesignWidth="500"
              x:Name="PluginViewName">
     <GroupBox Width="auto"
               Header="{Binding}"
               Style="{StaticResource MaterialDesignCardGroupBox}"
               Margin="0"
+              FontSize="8"
+              Padding="0"
               materialDesign:ColorZoneAssist.Mode="Standard">
         <GroupBox.HeaderTemplate>
             <DataTemplate>
-                <Grid Background="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ListBoxItem}, Path=Background}">
+                <Grid Background="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ListBoxItem}, Path=Background}" Height="10" Margin="0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="159*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Margin="0"
+                    <TextBlock FontSize="8"
+                               Height="10"
+                               Margin="0"
+                               Padding="0"
                                VerticalAlignment="Center"
                                Style="{StaticResource MaterialDesignSubheadingTextBlock}"
-                               Text="{Binding Plugin.PluginName}"/>
-                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+                               Text="{Binding Plugin.PluginName}" Grid.ColumnSpan="2"/>
+                    <StackPanel Grid.Column="2" Orientation="Horizontal">
                         <Button ToolTip="Add filter"
+                                Height="10"
+                                Margin="0"
                                 materialDesign:ColorZoneAssist.Mode="Standard"
                                 Style="{StaticResource MaterialDesignCardButton}"
                                 Click="AddFilter_OnClick"
                                 IsEnabled="{Binding CanAddFilter}">
-                            <materialDesign:PackIcon Kind="Filter" Width="20" Height="20"/>
+                            <materialDesign:PackIcon Kind="Filter" Width="10" Height="10"/>
                         </Button>
                         <Button ToolTip="Remove plugin"
+                                Height="10"
+                                Margin="0"
                                 materialDesign:ColorZoneAssist.Mode="Standard"
                                 Style="{StaticResource MaterialDesignCardButton}"
                                 Click="RemovePlugin_OnClick"
                                 IsEnabled="{Binding CanRemove}">
-                            <materialDesign:PackIcon Kind="Trash" Width="20" Height="20"/>
+                            <materialDesign:PackIcon Kind="Trash" Width="10" Height="10"/>
                         </Button>
                     </StackPanel>
                 </Grid>
             </DataTemplate>
         </GroupBox.HeaderTemplate>
-        <StackPanel x:Name="PluginContent">
+        <StackPanel x:Name="PluginContent" Margin="0">
             <ItemsControl ItemsSource="{Binding Filters}"
                           ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-                     ScrollViewer.CanContentScroll="False">
+                          ScrollViewer.CanContentScroll="False"
+                          Padding="0"
+                          Margin="0"
+                          FontSize="8">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <WrapPanel Orientation="Horizontal" IsItemsHost="True" MaxWidth="{Binding ActualWidth, ElementName=PluginContent}" />
+                        <WrapPanel  Margin="0" Orientation="Horizontal" IsItemsHost="True" MaxWidth="{Binding ActualWidth, ElementName=PluginContent}" />
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
@@ -59,13 +75,15 @@
                             Content="{Binding Name}"
                             IsDeletable="{Binding IsEnabled}"
                             IsEnabled="{Binding IsEnabled}"
-                            Margin="0 0 8 8"
+                            Margin="0"
+                            Padding="0"
+                            FontSize="8"
                             Click="Filter_OnClick"
                             DeleteClick="Filter_OnDeleteClick"
                             ToolTip="Toggle filter"
                             DeleteToolTip="Delete filter">
                             <materialDesign:Chip.Icon>
-                                <materialDesign:PackIcon Kind="{Binding ChipIcon}" materialDesign:ColorZoneAssist.Mode="Standard"/>
+                                <materialDesign:PackIcon Height="10" Width="10" Margin="0" Padding="0" FontSize="8" Kind="{Binding ChipIcon}" materialDesign:ColorZoneAssist.Mode="Standard"/>
                             </materialDesign:Chip.Icon>
                             <materialDesign:Chip.Style>
                                 <Style TargetType="materialDesign:Chip">
@@ -77,32 +95,30 @@
                                 </Style>
                             </materialDesign:Chip.Style>
                         </materialDesign:Chip>
-                        
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
-            <Grid>
+            <Grid Margin="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <ItemsControl Grid.Row="0" ItemsSource="{Binding DeviceBindings}" VerticalAlignment="Stretch">
+                <ItemsControl  Margin="0" Padding="0" FontSize="8" Grid.Row="0" ItemsSource="{Binding DeviceBindings}" VerticalAlignment="Stretch">
                     <ItemsControl.Resources>
                         <Style TargetType="ListBoxItem">
                             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
                         </Style>
                     </ItemsControl.Resources>
                     <ItemsControl.ItemTemplate>
-                        <DataTemplate >
-                            <controls:DeviceBindingControl DataContext="{Binding}" DeviceBinding="{Binding DeviceBinding}" Label="{Binding DeviceBindingName}" Category="{Binding DeviceBindingCategory}"  />
+                        <DataTemplate>
+                            <controls:DeviceBindingControl Margin="0" Padding="0" FontSize="8" DataContext="{Binding}" DeviceBinding="{Binding DeviceBinding}" Label="{Binding DeviceBindingName}" Category="{Binding DeviceBindingCategory}"  />
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
-
-                <ItemsControl Grid.Row="1" ItemsSource="{Binding PluginPropertyGroups}" HorizontalContentAlignment="Stretch">
+                <ItemsControl FontSize="8" Width="10" Height="10" Margin="0" Padding="0" Grid.Row="1" ItemsSource="{Binding PluginPropertyGroups}" HorizontalContentAlignment="Stretch">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Grid>
+                            <Grid Margin="0">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
@@ -111,9 +127,9 @@
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Row="0" Grid.Column="0" Margin="0 8 4 8" Text="{Binding GroupName}" Style="{StaticResource MaterialDesignSubheadingTextBlock}"/>
-                                <Separator Grid.Row="0" Grid.Column="1" Style="{StaticResource MaterialDesignSeparator}" />
-                                <plugin:PluginPropertyListControl DataContext="{Binding}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
+                                <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding GroupName}" Style="{StaticResource MaterialDesignSubheadingTextBlock}" FontSize="8" Width="10" Height="10" Margin="0" Padding="0"/>
+                                <Separator FontSize="8" Width="10" Height="10" Margin="0" Padding="0" Grid.Row="0" Grid.Column="1" Style="{StaticResource MaterialDesignSeparator}" />
+                                <plugin:PluginPropertyListControl FontSize="8" Width="10" Height="10" Margin="0" Padding="0" DataContext="{Binding}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
                             </Grid>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
